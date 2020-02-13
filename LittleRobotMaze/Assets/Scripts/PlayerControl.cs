@@ -15,7 +15,15 @@ public class PlayerControl : MonoBehaviour
         moves.Add("forward");
         moves.Add("forward");
         moves.Add("left");
-        moves.Add("back");
+
+        // how to add for loop
+        moves.Add("for"); // for
+        moves.Add("4"); // # of times to loop
+        moves.Add("back"); // actions
+        moves.Add("left");
+        moves.Add("done"); // done
+        //
+
         moves.Add("right");
         moves.Add("right");
     }
@@ -26,7 +34,7 @@ public class PlayerControl : MonoBehaviour
         if (moving)
         {
             if (gameObject.transform.position != targetPos) {
-                movePlayerTo(targetPos);
+                MovePlayerTo(targetPos,0.05f);
             }
             else
             {
@@ -36,17 +44,21 @@ public class PlayerControl : MonoBehaviour
         else if(moves.Count != 0)
         {
             // if queue is not empty and not moving
-            targetPos = findTargetPos(moves[0]);
-            moves.Remove(moves[0]);
+            if (moves[0] == "for") {
+                ForLoopReplace(moves);
+            }
+
+            targetPos = FindTargetPos(moves[0]);
+            moves.RemoveAt(0);
             moving = true;
         }
     }
 
-    void movePlayerTo(Vector3 movePos) {
-        float lerpSpd = 0.05f;
+    void MovePlayerTo(Vector3 movePos, float lerpSpd) {
 
         //check distance between points to clamp
-        if (Vector3.Distance(gameObject.transform.position, movePos) < 0.01f) {
+        if (Vector3.Distance(gameObject.transform.position, movePos) < 0.01f)
+        {
             gameObject.transform.position = movePos;
             return;
         }
@@ -56,8 +68,9 @@ public class PlayerControl : MonoBehaviour
 
     }
 
-    // returns a vector of new position
-    Vector3 findTargetPos(string move) {
+    Vector3 FindTargetPos(string move) {
+        // returns a vector of new position
+
         Vector3 newTargetPos = gameObject.transform.position;
 
         switch (move)
@@ -77,5 +90,25 @@ public class PlayerControl : MonoBehaviour
         }
 
         return newTargetPos;
+    }
+
+    void ForLoopReplace(List<string> movesList) {
+        // replaces for loop in list to perform for loop
+
+        movesList.RemoveAt(0);
+        int count = int.Parse(moves[0]);
+        movesList.RemoveAt(0);
+
+        List<string> insertMoveList = new List<string>();
+
+        while (moves[0] != "done") {
+            insertMoveList.Add(moves[0]);
+            movesList.RemoveAt(0);
+        }
+        movesList.RemoveAt(0);
+
+        for (int i = 0; i < count; i++) {
+            movesList.InsertRange(0,insertMoveList);
+        }
     }
 }
