@@ -7,6 +7,7 @@ public class PlayerControl : MonoBehaviour
     List<string> moves = new List<string>();
     Vector3 targetPos;
     bool moving = false;
+    float moveSpd = 0.1f;
 
     // Start is called before the first frame update
     void Start()
@@ -29,12 +30,12 @@ public class PlayerControl : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (moving)
         {
             if (gameObject.transform.position != targetPos) {
-                MovePlayerTo(targetPos,0.05f);
+                MovePlayerTo(targetPos,moveSpd);
             }
             else
             {
