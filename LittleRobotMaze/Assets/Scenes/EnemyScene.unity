@@ -369,7 +369,22 @@ PrefabInstance:
     - target: {fileID: 4271085752264524249, guid: 6d35fd45ceb97da4f8b65be7ed37348a,
         type: 3}
       propertyPath: moveTemplate.Array.data[3]
-      value: right
+      value: diagonal backward right
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271085752264524249, guid: 6d35fd45ceb97da4f8b65be7ed37348a,
+        type: 3}
+      propertyPath: moveTemplate.Array.data[0]
+      value: diagonal forward left
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271085752264524249, guid: 6d35fd45ceb97da4f8b65be7ed37348a,
+        type: 3}
+      propertyPath: moveTemplate.Array.data[1]
+      value: diagonal backward left
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271085752264524249, guid: 6d35fd45ceb97da4f8b65be7ed37348a,
+        type: 3}
+      propertyPath: moveTemplate.Array.data[2]
+      value: diagonal forward right
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d35fd45ceb97da4f8b65be7ed37348a, type: 3}
