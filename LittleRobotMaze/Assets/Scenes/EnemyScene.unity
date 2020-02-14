@@ -366,6 +366,11 @@ PrefabInstance:
       propertyPath: m_UseGravity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4271085752264524249, guid: 6d35fd45ceb97da4f8b65be7ed37348a,
+        type: 3}
+      propertyPath: moveTemplate.Array.data[3]
+      value: right
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d35fd45ceb97da4f8b65be7ed37348a, type: 3}
 --- !u!1 &1075667360
