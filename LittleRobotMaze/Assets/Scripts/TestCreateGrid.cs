@@ -13,9 +13,9 @@ public class TestCreateGrid : MonoBehaviour
         int offset = 0;
 
         int y = -1;
-        for (int i = -10; i < 10; i++) {
+        for (int i = -5; i < 5; i++) {
             piece = offset;
-            for (int j = -10; j < 10; j++)
+            for (int j = -5; j < 5; j++)
             {
                 GameObject block = Instantiate(blocks[piece],gameObject.transform);
                 block.transform.position = new Vector3(i, y, j);
