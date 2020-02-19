@@ -67,6 +67,7 @@ public class UIScript : MonoBehaviour
         PlayerControl.moves.Add("for");
         forButton.interactable = false;
         doneButton.interactable = true;
+        runButton.interactable = false;
     }
 
     void DoneClicked()
@@ -75,11 +76,15 @@ public class UIScript : MonoBehaviour
         PlayerControl.moves.Add("done");
         forButton.interactable = true;
         doneButton.interactable = false;
+        runButton.interactable = true;
     }
 
     void RunClicked()
     {
         Debug.Log("RUN clicked");
         PlayerControl.moving = true;
+
+        //send list to playercontrol
+        //let gamecontroller know to run
     }
 }
