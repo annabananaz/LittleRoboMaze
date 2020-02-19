@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TextBubbleTester : MonoBehaviour {
     void Start() {
-        GameObject.Find("Player").GetComponent<TextBubbleScript>().ShowBubble("Hello, World", 5);
+        TextBubbleScript tb = GameObject.Find("Player").GetComponent<TextBubbleScript>();
+        tb.height = 5;
+        tb.ShowBubble("Hello, World", 5);
     }
 }
