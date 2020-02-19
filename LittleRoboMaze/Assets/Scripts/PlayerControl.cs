@@ -33,18 +33,23 @@ public class PlayerControl : MonoBehaviour
     {
         if (moving)
         {
-            if (gameObject.transform.position != targetPos) {
-                MovePlayerTo(targetPos,0.05f);
+            if (gameObject.transform.position != targetPos)
+            {
+                MovePlayerTo(targetPos, 0.05f);
             }
             else
             {
                 moving = false;
             }
         }
-        else if(moves.Count != 0)
+    }
+
+    void NextMove() {
+        if (moves.Count != 0)
         {
             // if queue is not empty and not moving
-            if (moves[0] == "for") {
+            if (moves[0] == "for")
+            {
                 ForLoopReplace(moves);
             }
 
@@ -110,5 +115,9 @@ public class PlayerControl : MonoBehaviour
         for (int i = 0; i < count; i++) {
             movesList.InsertRange(0,insertMoveList);
         }
+    }
+
+    public void SetList(List<string> newList) {
+        moves = new List<string>(newList);
     }
 }
