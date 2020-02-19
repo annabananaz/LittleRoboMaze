@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    List<string> moves = new List<string>();
+    public static List<string> moves = new List<string>();
     Vector3 targetPos;
-    bool moving = false;
+    public static bool moving = false;
 
     // Start is called before the first frame update
     void Start()
