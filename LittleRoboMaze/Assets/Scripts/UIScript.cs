@@ -13,6 +13,9 @@ public class UIScript : MonoBehaviour
     public Button doneButton;
     public Button runButton;
 
+    private Text commandList;
+    private string commandListStr;
+    private bool forActivated;
 
     void Start()
     {
@@ -32,32 +35,45 @@ public class UIScript : MonoBehaviour
         forButton.onClick.AddListener(ForClicked);
         doneButton.onClick.AddListener(DoneClicked);
         runButton.onClick.AddListener(RunClicked);
+        commandList = FindObjectOfType<ScrollRect>().content.GetComponent<Text>();
+
+        commandListStr = "";
+        forActivated = false;
 
         doneButton.interactable = false;
+    }
+
+    private void Update()
+    {
+        commandList.text = commandListStr;
     }
 
     void ForwardClicked()
     {
         Debug.Log("FORWARD clicked");
         PlayerControl.moves.Add("forward");
+        commandListStr += "Move forward\n";
     }
 
     void BackClicked()
     {
         Debug.Log("BACK clicked");
         PlayerControl.moves.Add("back");
+        commandListStr += "Move back\n";
     }
 
     void LeftClicked()
     {
         Debug.Log("LEFT clicked");
         PlayerControl.moves.Add("left");
+        commandListStr += "Move left\n";
     }
 
     void RightClicked()
     {
         Debug.Log("RIGHT clicked");
         PlayerControl.moves.Add("right");
+        commandListStr += "Move right\n";
 
     }
 
@@ -68,6 +84,7 @@ public class UIScript : MonoBehaviour
         forButton.interactable = false;
         doneButton.interactable = true;
         runButton.interactable = false;
+        commandListStr += "For{\n";
     }
 
     void DoneClicked()
@@ -77,6 +94,7 @@ public class UIScript : MonoBehaviour
         forButton.interactable = true;
         doneButton.interactable = false;
         runButton.interactable = true;
+        commandListStr += "}\n";
     }
 
     void RunClicked()
