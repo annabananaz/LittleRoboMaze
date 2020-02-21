@@ -16,7 +16,7 @@ public class EnemyScript : EnemyObserver
     {
         moving=false;
         moveIndex=0;
-        onNotify(9);
+        //onNotify(9);
     }
 
     // Update is called once per frame
@@ -36,8 +36,14 @@ public class EnemyScript : EnemyObserver
             }
         }
 
+        if (movesToMake.Count < 4) {
+            onNotify(4);
+        }
+    }
+
+    void NextMove() {
         //if there are moves left, make a move
-        else if(movesToMake.Count > 0)
+        if (movesToMake.Count > 0)
         {
             targetPos = FindTargetPos(movesToMake[0]);
             movesToMake.RemoveAt(0);
