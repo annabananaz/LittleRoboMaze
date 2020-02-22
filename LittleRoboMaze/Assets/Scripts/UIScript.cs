@@ -17,8 +17,12 @@ public class UIScript : MonoBehaviour
     private string commandListStr;
     private bool forActivated;
 
+    private int numCommands;
+
     void Start()
     {
+
+        numCommands = 0;
 
         forwardButton = forwardButton.GetComponent<Button>();
         backButton = backButton.GetComponent<Button>();
@@ -52,28 +56,32 @@ public class UIScript : MonoBehaviour
     {
         Debug.Log("FORWARD clicked");
         PlayerControl.moves.Add("forward");
-        commandListStr += "Move forward\n";
+        numCommands++;
+        commandListStr += numCommands + ".\tMove forward\n";
     }
 
     void BackClicked()
     {
         Debug.Log("BACK clicked");
         PlayerControl.moves.Add("back");
-        commandListStr += "Move back\n";
+        numCommands++;
+        commandListStr += numCommands + ".\tMove back\n";
     }
 
     void LeftClicked()
     {
         Debug.Log("LEFT clicked");
         PlayerControl.moves.Add("left");
-        commandListStr += "Move left\n";
+        numCommands++;
+        commandListStr += numCommands + ".\tMove left\n";
     }
 
     void RightClicked()
     {
         Debug.Log("RIGHT clicked");
         PlayerControl.moves.Add("right");
-        commandListStr += "Move right\n";
+        numCommands++;
+        commandListStr += numCommands  + ".\tMove right\n";
 
     }
 
