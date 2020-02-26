@@ -12,20 +12,20 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         //to test
-        moves.Add("forward");
-        moves.Add("forward");
-        moves.Add("left");
+        //moves.Add("forward");
+        //moves.Add("forward");
+        //moves.Add("left");
 
         // how to add for loop
-        moves.Add("for"); // for
-        moves.Add("4"); // # of times to loop
-        moves.Add("back"); // actions
-        moves.Add("left");
-        moves.Add("done"); // done
-        //
+        //moves.Add("for"); // for
+        //moves.Add("4"); // # of times to loop
+        //moves.Add("back"); // actions
+        //moves.Add("left");
+        //moves.Add("done"); // done
+        ////
 
-        moves.Add("right");
-        moves.Add("right");
+        //moves.Add("right");
+        //moves.Add("right");
     }
 
     // Update is called once per frame
@@ -87,10 +87,10 @@ public class PlayerControl : MonoBehaviour
                 newTargetPos -= new Vector3(1, 0, 0);
                 break;
             case "right":
-                newTargetPos += new Vector3(0, 0, 1);
+                newTargetPos -= new Vector3(0, 0, 1);
                 break;
             case "left":
-                newTargetPos -= new Vector3(0, 0, 1);
+                newTargetPos += new Vector3(0, 0, 1);
                 break;
         }
 
