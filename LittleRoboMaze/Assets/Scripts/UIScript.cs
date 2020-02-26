@@ -21,6 +21,9 @@ public class UIScript : MonoBehaviour
 
     private int numCommands;
 
+    public GameObject player;
+    public GameObject gameManager;
+
     private List<string> commandList;
 
     void Start()
@@ -139,6 +142,8 @@ public class UIScript : MonoBehaviour
     {
         Debug.Log("RUN clicked");
         //PlayerControl.moving = true;
+        player.GetComponent<PlayerControl>().SetList(commandList);
+        gameManager.GetComponent<AllMoveManager>().running = true;
 
         //send list to gameController
     }
