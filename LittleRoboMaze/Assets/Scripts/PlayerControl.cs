@@ -6,7 +6,7 @@ public class PlayerControl : MonoBehaviour
 {
     public static List<string> moves = new List<string>();
     Vector3 targetPos;
-    public static bool moving = false;
+    public bool moving = false;
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +44,7 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    void NextMove() {
+    public void NextMove() {
         if (moves.Count != 0)
         {
             // if queue is not empty and not moving
