@@ -34,20 +34,25 @@ public class AllMoveManager : MonoBehaviour
             }
         }
 
-        if (moveValid)
-        {
-            for (int i = 0; i < objects.Count; i++)
-            {
-                GameObject obj = objects[i];
-                if (obj.tag == "Player")
-                {
-                    obj.GetComponent<PlayerControl>().NextMove();
-                }
 
-                if (obj.tag == "Enemy")
-                {
-                    obj.GetComponent<EnemyScript>().NextMove();
-                }
+        if (moveValid && Input.GetKey(KeyCode.Space))
+        {
+            moveAll();
+        }
+    }
+
+    private void moveAll() {
+        for (int i = 0; i < objects.Count; i++)
+        {
+            GameObject obj = objects[i];
+            if (obj.tag == "Player")
+            {
+                obj.GetComponent<PlayerControl>().NextMove();
+            }
+
+            if (obj.tag == "Enemy")
+            {
+                obj.GetComponent<EnemyScript>().NextMove();
             }
         }
     }

@@ -82,7 +82,7 @@ public class UIScript : MonoBehaviour
     void RunClicked()
     {
         Debug.Log("RUN clicked");
-        PlayerControl.moving = true;
+        //PlayerControl.moving = true;
 
         //send list to playercontrol
         //let gamecontroller know to run

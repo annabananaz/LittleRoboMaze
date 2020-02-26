@@ -9,12 +9,12 @@ public class EnemyScript : EnemyObserver
     public int moveIndex;               //index of current move
     public int dist;                    //distance of moving (optional)
     Vector3 targetPos;                  //target position of current move
-    bool moving;                        //shows if enemy is currently moving
+    public bool moving;                        //shows if enemy is currently moving
 
     // Start is called before the first frame update
     void Start()
     {
-        moving=false;
+        moving = false;
         moveIndex=0;
         //onNotify(9);
     }
@@ -41,7 +41,7 @@ public class EnemyScript : EnemyObserver
         }
     }
 
-    void NextMove() {
+    public void NextMove() {
         //if there are moves left, make a move
         if (movesToMake.Count > 0)
         {
