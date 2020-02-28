@@ -23,12 +23,13 @@ public class UIScript : MonoBehaviour
 
     public GameObject player;
     public GameObject gameManager;
+    public static int runCount;
 
     private List<string> commandList;
 
     void Start()
     {
-
+        runCount = 0;
         numCommands = 0;
 
         forwardButton = forwardButton.GetComponent<Button>();
@@ -144,7 +145,7 @@ public class UIScript : MonoBehaviour
         //PlayerControl.moving = true;
         player.GetComponent<PlayerControl>().SetList(commandList);
         gameManager.GetComponent<AllMoveManager>().running = true;
-
+        runCount++;
         //send list to gameController
     }
 
