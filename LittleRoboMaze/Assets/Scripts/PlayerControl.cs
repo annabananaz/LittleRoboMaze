@@ -7,10 +7,14 @@ public class PlayerControl : MonoBehaviour
     public static List<string> moves = new List<string>();
     Vector3 targetPos;
     public bool moving = false;
+    Vector3 startPos;
+    public static bool reachedGoal;
 
     // Start is called before the first frame update
     void Start()
     {
+        startPos = transform.position;
+        reachedGoal = false;
         //to test
         //moves.Add("forward");
         //moves.Add("forward");
@@ -33,13 +37,26 @@ public class PlayerControl : MonoBehaviour
     {
         if (moving)
         {
-            if (gameObject.transform.position != targetPos)
+            if (UIScript.runCount < 3 && !reachedGoal)
             {
-                MovePlayerTo(targetPos, 0.05f);
+                if (gameObject.transform.position != targetPos)
+                {
+                    MovePlayerTo(targetPos, 0.05f);
+                }
+                else
+                {
+                    moving = false;
+                }
             }
-            else
+            else if (UIScript.runCount >= 3 && !reachedGoal)
             {
-                moving = false;
+                print("RESETTING");
+                ResetLevel();
+            }
+            else if (reachedGoal)
+            {
+                print("A winner is you!");
+                reachedGoal = true;
             }
         }
     }
@@ -119,5 +136,25 @@ public class PlayerControl : MonoBehaviour
 
     public void SetList(List<string> newList) {
         moves = new List<string>(newList);
+    }
+
+    public void ResetLevel()
+    {
+        gameObject.transform.position = startPos;
+        UIScript.runCount = 0;
+        print("RESETTI");
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.name.Equals("Endpoint"))
+        {
+            print("GOOOOOOOOAAAAAAAAAL");
+            reachedGoal = true;
+        }
+        else
+        {
+            reachedGoal = false;
+        }
     }
 }
