@@ -10,6 +10,8 @@ public class UIScript : MonoBehaviour
     public Button leftButton;
     public Button rightButton;
     public Button forButton;
+    public InputField loopNumberField;
+    public Text alerText;
     public Button doneButton;
     public Button runButton;
 
@@ -20,15 +22,17 @@ public class UIScript : MonoBehaviour
     private bool forActivated;
 
     private int numCommands;
+    private bool intTaken;
 
     public GameObject player;
     public GameObject gameManager;
+    public static int runCount;
 
     private List<string> commandList;
 
     void Start()
     {
-
+        runCount = 0;
         numCommands = 0;
 
         forwardButton = forwardButton.GetComponent<Button>();
@@ -36,6 +40,7 @@ public class UIScript : MonoBehaviour
         leftButton = leftButton.GetComponent<Button>();
         rightButton = rightButton.GetComponent<Button>();
         forButton = forButton.GetComponent<Button>();
+        loopNumberField = loopNumberField.GetComponent<InputField>();
         doneButton = doneButton.GetComponent<Button>();
         runButton = runButton.GetComponent<Button>();
         clearButton = clearButton.GetComponent<Button>();
@@ -45,6 +50,7 @@ public class UIScript : MonoBehaviour
         leftButton.onClick.AddListener(LeftClicked);
         rightButton.onClick.AddListener(RightClicked);
         forButton.onClick.AddListener(ForClicked);
+        loopNumberField.onValueChanged.AddListener(delegate { GetLoopNumber(); });
         doneButton.onClick.AddListener(DoneClicked);
         runButton.onClick.AddListener(RunClicked);
         clearButton.onClick.AddListener(ClearList);
@@ -53,8 +59,9 @@ public class UIScript : MonoBehaviour
 
         commandListStr = "";
         forActivated = false;
-
+        intTaken = false;
         doneButton.interactable = false;
+        alerText.enabled = false;
 
 
         commandList = new List<string>();
@@ -69,12 +76,14 @@ public class UIScript : MonoBehaviour
             forButton.interactable = false;
             doneButton.interactable = true;
             runButton.interactable = false;
+            loopNumberField.interactable = false;
         }
         else
         {
             forButton.interactable = true;
             doneButton.interactable = false;
             runButton.interactable = true;
+            loopNumberField.interactable = true;
         }
     }
 
@@ -116,14 +125,37 @@ public class UIScript : MonoBehaviour
 
     void ForClicked()
     {
-        Debug.Log("FOR clicked");
-        PlayerControl.moves.Add("for");
-        //forButton.interactable = false;
-        //doneButton.interactable = true;
-        //runButton.interactable = false;
-        forActivated = true;
-        commandListStr += "For{\n";
-        commandList.Add("for");
+        if (intTaken)
+        {
+            Debug.Log("FOR clicked");
+            PlayerControl.moves.Add("for");
+            PlayerControl.moves.Add(loopNumberField.text.ToString());
+            forActivated = true;
+            commandListStr += "For(" + loopNumberField.text.ToString() + "){\n";
+            commandList.Add("for");
+            commandList.Add(loopNumberField.text.ToString());
+        }
+        else
+        {
+            Debug.Log("For loop requires number");
+            alerText.enabled = true;
+        }
+    }
+
+    void GetLoopNumber()
+    {
+        try
+        {
+            int loopnumber = int.Parse(loopNumberField.text.ToString());
+            Debug.Log(loopnumber);
+            intTaken = true;
+            alerText.enabled = false;
+        }
+        catch
+        {
+            Debug.Log("Wrong input");
+            alerText.enabled = true;
+        }
     }
 
     void DoneClicked()
@@ -134,6 +166,7 @@ public class UIScript : MonoBehaviour
         //doneButton.interactable = false;
         //runButton.interactable = true;
         forActivated = false;
+        intTaken = false;
         commandListStr += "}\n";
         commandList.Add("done");
     }
@@ -144,8 +177,9 @@ public class UIScript : MonoBehaviour
         //PlayerControl.moving = true;
         player.GetComponent<PlayerControl>().SetList(commandList);
         gameManager.GetComponent<AllMoveManager>().running = true;
-
-        //send list to gameController
+        runCount++;
+        loopNumberField.text = "";
+        alerText.enabled = false;
     }
 
     void ClearList()
