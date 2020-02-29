@@ -49,6 +49,7 @@ public class AllMoveManager : MonoBehaviour
             if (obj.tag == "Player")
             {
                 obj.GetComponent<PlayerControl>().NextMove();
+                
             }
 
             if (obj.tag == "Enemy")
