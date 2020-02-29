@@ -7,6 +7,7 @@ public class PlayerControl : MonoBehaviour
     public static List<string> moves = new List<string>();
     Vector3 targetPos;
     public bool moving = false;
+    public ObsticalCheck other;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +48,9 @@ public class PlayerControl : MonoBehaviour
     public void NextMove() {
         if (moves.Count != 0)
         {
+            GameObject go = GameObject.Find("Obsticals");
+            ObsticalCheck other = (ObsticalCheck)go.GetComponent(typeof(ObsticalCheck));
+            other.changeBridgeState();
             // if queue is not empty and not moving
             if (moves[0] == "for")
             {
@@ -60,7 +64,6 @@ public class PlayerControl : MonoBehaviour
     }
 
     void MovePlayerTo(Vector3 movePos, float lerpSpd) {
-
         //check distance between points to clamp
         if (Vector3.Distance(gameObject.transform.position, movePos) < 0.01f)
         {
