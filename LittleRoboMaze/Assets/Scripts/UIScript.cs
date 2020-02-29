@@ -154,6 +154,7 @@ public class UIScript : MonoBehaviour
         catch
         {
             Debug.Log("Wrong input");
+            intTaken = false;
             alerText.enabled = true;
         }
     }
