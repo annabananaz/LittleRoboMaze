@@ -641,11 +641,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2120801770740021211, guid: d30af381f372c154388140cccac60746,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas
-      objectReference: {fileID: 0}
     - target: {fileID: 2120801770740021215, guid: d30af381f372c154388140cccac60746,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -750,6 +745,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2120801770740021211, guid: d30af381f372c154388140cccac60746,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 2120801770998818162, guid: d30af381f372c154388140cccac60746,
         type: 3}
@@ -873,6 +873,18 @@ PrefabInstance:
     - target: {fileID: 1987868352, guid: d30af381f372c154388140cccac60746, type: 3}
       propertyPath: m_FontData.m_FontStyle
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987868352, guid: d30af381f372c154388140cccac60746, type: 3}
+      propertyPath: m_Color.r
+      value: 0.97647065
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987868352, guid: d30af381f372c154388140cccac60746, type: 3}
+      propertyPath: m_Color.g
+      value: 0.62352943
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987868352, guid: d30af381f372c154388140cccac60746, type: 3}
+      propertyPath: m_Color.b
+      value: 0.10588236
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d30af381f372c154388140cccac60746, type: 3}

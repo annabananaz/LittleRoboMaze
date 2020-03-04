@@ -92,7 +92,9 @@ public class UIScript : MonoBehaviour
         Debug.Log("FORWARD clicked");
       //  PlayerControl.moves.Add("forward");
         numCommands++;
-        commandListStr += numCommands + ".\tMove forward\n";
+        if (forActivated)
+            commandListStr += "\t";
+        commandListStr += "Move forward\n";
         commandList.Add("forward");
     }
 
@@ -101,7 +103,9 @@ public class UIScript : MonoBehaviour
         Debug.Log("BACK clicked");
        // PlayerControl.moves.Add("back");
         numCommands++;
-        commandListStr += numCommands + ".\tMove back\n";
+        if (forActivated)
+            commandListStr += "\t";
+        commandListStr += "Move back\n";
         commandList.Add("back");
     }
 
@@ -110,7 +114,9 @@ public class UIScript : MonoBehaviour
         Debug.Log("LEFT clicked");
        // PlayerControl.moves.Add("left");
         numCommands++;
-        commandListStr += numCommands + ".\tMove left\n";
+        if (forActivated)
+            commandListStr += "\t";
+        commandListStr += "Move left\n";
         commandList.Add("left");
     }
 
@@ -119,7 +125,9 @@ public class UIScript : MonoBehaviour
         Debug.Log("RIGHT clicked");
        // PlayerControl.moves.Add("right");
         numCommands++;
-        commandListStr += numCommands  + ".\tMove right\n";
+        if (forActivated)
+            commandListStr += "\t";
+        commandListStr += "Move right\n";
         commandList.Add("right");
     }
 
