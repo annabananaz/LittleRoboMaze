@@ -7,7 +7,7 @@ public class AllMoveManager : MonoBehaviour
     [SerializeField] private List<GameObject> objects = new List<GameObject>();
     
     bool moveValid = true;
-    public bool running = false;
+    public static bool running = false;
     // Start is called before the first frame update
     void Start()
     {

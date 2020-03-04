@@ -78,6 +78,10 @@ public class PlayerControl : MonoBehaviour
             moves.RemoveAt(0);
             moving = true;
         }
+        else
+        {
+            AllMoveManager.running = false;
+        }
     }
 
     void MovePlayerTo(Vector3 movePos, float lerpSpd) {

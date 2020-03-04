@@ -90,7 +90,7 @@ public class UIScript : MonoBehaviour
     void ForwardClicked()
     {
         Debug.Log("FORWARD clicked");
-        PlayerControl.moves.Add("forward");
+      //  PlayerControl.moves.Add("forward");
         numCommands++;
         commandListStr += numCommands + ".\tMove forward\n";
         commandList.Add("forward");
@@ -99,7 +99,7 @@ public class UIScript : MonoBehaviour
     void BackClicked()
     {
         Debug.Log("BACK clicked");
-        PlayerControl.moves.Add("back");
+       // PlayerControl.moves.Add("back");
         numCommands++;
         commandListStr += numCommands + ".\tMove back\n";
         commandList.Add("back");
@@ -108,7 +108,7 @@ public class UIScript : MonoBehaviour
     void LeftClicked()
     {
         Debug.Log("LEFT clicked");
-        PlayerControl.moves.Add("left");
+       // PlayerControl.moves.Add("left");
         numCommands++;
         commandListStr += numCommands + ".\tMove left\n";
         commandList.Add("left");
@@ -117,7 +117,7 @@ public class UIScript : MonoBehaviour
     void RightClicked()
     {
         Debug.Log("RIGHT clicked");
-        PlayerControl.moves.Add("right");
+       // PlayerControl.moves.Add("right");
         numCommands++;
         commandListStr += numCommands  + ".\tMove right\n";
         commandList.Add("right");
@@ -128,8 +128,8 @@ public class UIScript : MonoBehaviour
         if (intTaken)
         {
             Debug.Log("FOR clicked");
-            PlayerControl.moves.Add("for");
-            PlayerControl.moves.Add(loopNumberField.text.ToString());
+           // PlayerControl.moves.Add("for");
+           // PlayerControl.moves.Add(loopNumberField.text.ToString());
             forActivated = true;
             commandListStr += "For(" + loopNumberField.text.ToString() + "){\n";
             commandList.Add("for");
@@ -162,7 +162,7 @@ public class UIScript : MonoBehaviour
     void DoneClicked()
     {
         Debug.Log("DONE clicked");
-        PlayerControl.moves.Add("done");
+        //PlayerControl.moves.Add("done");
         //forButton.interactable = true;
         //doneButton.interactable = false;
         //runButton.interactable = true;
@@ -177,7 +177,7 @@ public class UIScript : MonoBehaviour
         Debug.Log("RUN clicked");
         //PlayerControl.moving = true;
         player.GetComponent<PlayerControl>().SetList(commandList);
-        gameManager.GetComponent<AllMoveManager>().running = true;
+        AllMoveManager.running = true;
         runCount++;
         loopNumberField.text = "";
         alerText.enabled = false;
