@@ -34,10 +34,11 @@ public class LevelGenerator : MonoBehaviour {
 
 		foreach (ColorToPrefab colorMapping in colorMappings)
 		{
+            Debug.Log("work");
 			if (colorMapping.color.Equals(pixelColor))
 			{
-				Vector2 position = new Vector2(x, y);
-				Instantiate(colorMapping.prefab, position, Quaternion.identity, transform);
+				Vector3 position = new Vector3(x, 0, y);
+				Instantiate(colorMapping.prefab, position, Quaternion.identity);
 			}
 		}
 	}
