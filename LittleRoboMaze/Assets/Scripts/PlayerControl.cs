@@ -62,7 +62,8 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    public void NextMove() {
+    public void NextMove()
+    {
         if (moves.Count != 0)
         {
             GameObject go = GameObject.Find("Obsticals");
@@ -77,10 +78,11 @@ public class PlayerControl : MonoBehaviour
             targetPos = FindTargetPos(moves[0]);
             moves.RemoveAt(0);
             moving = true;
-        }
-        else
-        {
-            AllMoveManager.running = false;
+
+            if (moves.Count == 0)
+            {
+                AllMoveManager.running = false;
+            }
         }
     }
 
@@ -162,6 +164,15 @@ public class PlayerControl : MonoBehaviour
         else
         {
             reachedGoal = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log(collision.gameObject.name + " - 'You buffoon! You right into my trap!'");
+            ResetLevel();
         }
     }
 }
