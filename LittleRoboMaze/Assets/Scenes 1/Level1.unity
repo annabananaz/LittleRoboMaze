@@ -422,7 +422,6 @@ MonoBehaviour:
   objects:
   - {fileID: 1584761379}
   - {fileID: 2017395991}
-  - {fileID: 0}
 --- !u!4 &716137751
 Transform:
   m_ObjectHideFlags: 0
@@ -828,42 +827,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2120801770397633569, guid: d30af381f372c154388140cccac60746,
         type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 716137749}
-    - target: {fileID: 2120801770397633569, guid: d30af381f372c154388140cccac60746,
-        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1584761379}
-    - target: {fileID: 896954206, guid: d30af381f372c154388140cccac60746, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 896954206, guid: d30af381f372c154388140cccac60746, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 896954206, guid: d30af381f372c154388140cccac60746, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1012197068, guid: d30af381f372c154388140cccac60746, type: 3}
-      propertyPath: m_FontData.m_FontStyle
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1987868352, guid: d30af381f372c154388140cccac60746, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1987868352, guid: d30af381f372c154388140cccac60746, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1987868352, guid: d30af381f372c154388140cccac60746, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 2120801770397633569, guid: d30af381f372c154388140cccac60746,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 716137749}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d30af381f372c154388140cccac60746, type: 3}
 --- !u!1 &1309127871
