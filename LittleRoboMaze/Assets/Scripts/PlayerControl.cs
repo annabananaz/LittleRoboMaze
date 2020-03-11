@@ -10,27 +10,15 @@ public class PlayerControl : MonoBehaviour
     public ObsticalCheck other;
     Vector3 startPos;
     public static bool reachedGoal;
+    Vector3 down;
 
     // Start is called before the first frame update
     void Start()
     {
         startPos = transform.position;
         reachedGoal = false;
-        //to test
-        //moves.Add("forward");
-        //moves.Add("forward");
-        //moves.Add("left");
 
-        // how to add for loop
-        //moves.Add("for"); // for
-        //moves.Add("4"); // # of times to loop
-        //moves.Add("back"); // actions
-        //moves.Add("left");
-        //moves.Add("done"); // done
-        ////
-
-        //moves.Add("right");
-        //moves.Add("right");
+        down = transform.TransformDirection(Vector3.down);
     }
 
     // Update is called once per frame
@@ -60,7 +48,15 @@ public class PlayerControl : MonoBehaviour
                 reachedGoal = true;
             }
         }
+
+        //checks if player is still on level
+        Debug.DrawRay(transform.position, down, Color.red);
+        if (!Physics.Raycast(transform.position, down, 1))
+        {
+            Debug.Log("You done fell to your doom.");
+        }
     }
+    
 
     public void NextMove()
     {
@@ -97,7 +93,6 @@ public class PlayerControl : MonoBehaviour
 
         //lerp position
         gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, movePos, lerpSpd);
-
     }
 
     Vector3 FindTargetPos(string move) {
