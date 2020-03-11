@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
     public static List<string> moves = new List<string>();
     Vector3 targetPos;
     public bool moving = false;
-    public ObsticalCheck other;
+    //public ObsticalCheck other;
     Vector3 startPos;
     public static bool reachedGoal;
     Vector3 down;
@@ -26,27 +27,20 @@ public class PlayerControl : MonoBehaviour
     {
         if (moving)
         {
-            if (UIScript.runCount < 3 && !reachedGoal)
+            if (gameObject.transform.position != targetPos)
             {
-                if (gameObject.transform.position != targetPos)
-                {
-                    MovePlayerTo(targetPos, 0.05f);
-                }
-                else
-                {
-                    moving = false;
-                }
+                MovePlayerTo(targetPos, 0.05f);
             }
-            else if (UIScript.runCount >= 3 && !reachedGoal)
+            else
             {
-                print("RESETTING");
-                ResetLevel();
+                moving = false;
             }
-            else if (reachedGoal)
-            {
-                print("A winner is you!");
-                reachedGoal = true;
-            }
+        }
+
+        if (reachedGoal)
+        {
+            print("A winner is you!");
+            reachedGoal = true;
         }
 
         //checks if player is still on level
@@ -54,6 +48,7 @@ public class PlayerControl : MonoBehaviour
         if (!Physics.Raycast(transform.position, down, 1))
         {
             Debug.Log("You done fell to your doom.");
+            ResetScene();
         }
     }
     
@@ -62,9 +57,6 @@ public class PlayerControl : MonoBehaviour
     {
         if (moves.Count != 0)
         {
-            GameObject go = GameObject.Find("Obsticals");
-            ObsticalCheck other = (ObsticalCheck)go.GetComponent(typeof(ObsticalCheck));
-            other.changeBridgeState();
             // if queue is not empty and not moving
             if (moves[0] == "for")
             {
@@ -143,13 +135,6 @@ public class PlayerControl : MonoBehaviour
         moves = new List<string>(newList);
     }
 
-    public void ResetLevel()
-    {
-        gameObject.transform.position = startPos;
-        UIScript.runCount = 0;
-        print("RESETTI");
-    }
-
     void OnTriggerEnter(Collider other)
     {
         if (other.name.Equals("Endpoint"))
@@ -168,7 +153,15 @@ public class PlayerControl : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log(collision.gameObject.name + " says: 'Ha! You fell right into my trap!'");
-            ResetLevel();
+            ResetScene();
         }
+    }
+
+    // RESETS THE SCENE IF ANY BAD THINGS HAPPEN TO THE PLAYER
+    public void ResetScene()
+    {
+        print("Resetting in PC");
+        Scene currentSceneName = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentSceneName.name);
     }
 }
