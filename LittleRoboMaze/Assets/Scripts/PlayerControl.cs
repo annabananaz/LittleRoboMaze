@@ -37,27 +37,20 @@ public class PlayerControl : MonoBehaviour
     {
         if (moving)
         {
-            if (UIScript.runCount < 3 && !reachedGoal)
+            if (gameObject.transform.position != targetPos)
             {
-                if (gameObject.transform.position != targetPos)
-                {
-                    MovePlayerTo(targetPos, 0.05f);
-                }
-                else
-                {
-                    moving = false;
-                }
+                MovePlayerTo(targetPos, 0.05f);
             }
-            else if (UIScript.runCount >= 3 && !reachedGoal)
+            else
             {
-                print("RESETTING");
-                ResetLevel();
+                moving = false;
             }
-            else if (reachedGoal)
-            {
-                print("A winner is you!");
-                reachedGoal = true;
-            }
+        }
+
+        if (reachedGoal)
+        {
+            print("A winner is you!");
+            reachedGoal = true;
         }
     }
 
