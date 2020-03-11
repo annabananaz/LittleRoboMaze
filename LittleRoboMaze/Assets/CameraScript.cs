@@ -36,7 +36,7 @@ public class CameraScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Slash))
         {
-            thirdPersonCamera.transform.position = new Vector3(-6, 4, -2);
+            thirdPersonCamera.transform.position = transform.parent.position + new Vector3(-6, 4, -2);
             thirdPersonCamera.transform.LookAt(transform.parent);
         }
     }
