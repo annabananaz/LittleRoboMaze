@@ -372,6 +372,7 @@ MonoBehaviour:
   - {fileID: 1584761379}
   - {fileID: 2017395991}
   - {fileID: 1846628351}
+  maxRunAttempts: 3
 --- !u!4 &716137751
 Transform:
   m_ObjectHideFlags: 0
@@ -635,6 +636,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2120801770740021211, guid: d30af381f372c154388140cccac60746,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
     - target: {fileID: 2120801770740021215, guid: d30af381f372c154388140cccac60746,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -739,11 +745,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2120801770740021211, guid: d30af381f372c154388140cccac60746,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 2120801770998818162, guid: d30af381f372c154388140cccac60746,
         type: 3}
@@ -1032,7 +1033,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moving: 0
-  other: {fileID: 0}
 --- !u!54 &1584761385
 Rigidbody:
   m_ObjectHideFlags: 0
