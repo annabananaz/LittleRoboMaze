@@ -7,7 +7,7 @@ public class PlayerControl : MonoBehaviour
     public static List<string> moves = new List<string>();
     Vector3 targetPos;
     public bool moving = false;
-    public ObsticalCheck other;
+    //public ObsticalCheck other;
     Vector3 startPos;
     public static bool reachedGoal;
     Vector3 down;
@@ -62,9 +62,6 @@ public class PlayerControl : MonoBehaviour
     {
         if (moves.Count != 0)
         {
-            GameObject go = GameObject.Find("Obsticals");
-            ObsticalCheck other = (ObsticalCheck)go.GetComponent(typeof(ObsticalCheck));
-            other.changeBridgeState();
             // if queue is not empty and not moving
             if (moves[0] == "for")
             {

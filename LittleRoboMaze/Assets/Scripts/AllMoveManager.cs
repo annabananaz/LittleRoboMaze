@@ -8,6 +8,7 @@ public class AllMoveManager : MonoBehaviour
     
     bool moveValid = true;
     public static bool running = false;
+    int count = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +44,14 @@ public class AllMoveManager : MonoBehaviour
     }
 
     private void moveAll() {
+        count++;
+        if (count % 3 == 0)
+        {
+            GameObject go = GameObject.Find("Obsticals");
+            ObsticalCheck other = (ObsticalCheck)go.GetComponent(typeof(ObsticalCheck));
+            other.changeBridgeState();
+        }
+
         for (int i = 0; i < objects.Count; i++)
         {
             GameObject obj = objects[i];
