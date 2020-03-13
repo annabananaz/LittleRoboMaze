@@ -83,10 +83,10 @@ public class EnemyScript : EnemyObserver
                 newTargetPos -= new Vector3(1, 0, 0);
                 break;
             case "right":
-                newTargetPos += new Vector3(0, 0, 1);
+                newTargetPos -= new Vector3(0, 0, 1);
                 break;
             case "left":
-                newTargetPos -= new Vector3(0, 0, 1);
+                newTargetPos += new Vector3(0, 0, 1);
                 break;
             case "diagonal forward right":
                 newTargetPos += new Vector3(1, 0, 1);

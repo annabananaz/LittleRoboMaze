@@ -14,6 +14,7 @@ public class AllMoveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        running = false;
         print(UIScript.runCount);
     }
 
