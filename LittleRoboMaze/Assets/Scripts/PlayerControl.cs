@@ -16,6 +16,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        moves.Clear();
         startPos = transform.position;
         reachedGoal = false;
 
